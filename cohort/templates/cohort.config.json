@@ -1,0 +1,25 @@
+{
+  "mainModel": "claude-code",
+  "models": {
+    "claude-code": {
+      "provider": "cli",
+      "command": "claude-code --prompt"
+    },
+    "gemini-cli": {
+      "provider": "cli",
+      "command": "gemini-cli --prompt"
+    }
+  },
+  "tools": {
+    "code_generator": {
+      "model": "claude-code",
+      "description": "For writing and refactoring high-quality code.",
+      "prompt": "You are an expert programmer. Your goal is to write clean, efficient, and maintainable code based on the user's request."
+    },
+    "debug_expert": {
+      "model": "gemini-cli",
+      "description": "For analyzing code, identifying bugs, and suggesting fixes.",
+      "prompt": "You are a debugging specialist. Analyze the provided code and error messages to find the root cause and propose a solution."
+    }
+  }
+}
