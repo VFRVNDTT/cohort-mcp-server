@@ -9,32 +9,16 @@ const zod_1 = require("zod");
 const fs_1 = __importDefault(require("fs"));
 const path_1 = __importDefault(require("path"));
 // Define Zod schemas for configuration validation
-const ModelConfigSchema = zod_1.z.union([
-    zod_1.z.object({
-        provider: zod_1.z.literal("cli"),
-        command: zod_1.z.string().describe("Command to execute the CLI model")
-    }),
-    zod_1.z.object({
-        provider: zod_1.z.literal("google"),
-        apiKey: zod_1.z.string().describe("Google API key (can use 'env:VAR_NAME' syntax)")
-    }),
-    zod_1.z.object({
-        provider: zod_1.z.literal("anthropic"),
-        apiKey: zod_1.z.string().describe("Anthropic API key (can use 'env:VAR_NAME' syntax)")
-    }),
-    zod_1.z.object({
-        provider: zod_1.z.literal("ollama"),
-        baseURL: zod_1.z.string().url().describe("Base URL for Ollama API"),
-        model: zod_1.z.string().describe("Model name to use with Ollama")
-    })
-]);
+const ModelConfigSchema = zod_1.z.object({
+    provider: zod_1.z.literal("cli"),
+    command: zod_1.z.string().describe("Command to execute the CLI model")
+});
 const ToolConfigSchema = zod_1.z.object({
     model: zod_1.z.string().describe("Model ID to use for this tool"),
     description: zod_1.z.string().describe("Description of the tool's purpose"),
     prompt: zod_1.z.string().describe("System prompt to use with this tool")
 });
 const ConfigSchema = zod_1.z.object({
-    mainModel: zod_1.z.string().describe("Default model ID for general tasks"),
     models: zod_1.z.record(zod_1.z.string(), ModelConfigSchema),
     tools: zod_1.z.record(zod_1.z.string(), ToolConfigSchema)
 });

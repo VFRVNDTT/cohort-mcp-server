@@ -1,41 +1,45 @@
 import { spawn } from "child_process";
 import { ModelConfig } from "./config";
 import { ToolConfig } from "./config";
+import { appendFileSync } from "fs";
 
-function resolveApiKey(apiKey: string): string {
-  if (apiKey.startsWith("env:")) {
-    const envVar = apiKey.substring(4);
-    const key = process.env[envVar];
-    if (!key) {
-      throw new Error(`Environment variable not found: ${envVar}`);
-    }
-    return key;
+function debugLog(message: string) {
+  const timestamp = new Date().toISOString();
+  const logMessage = `${timestamp}: ${message}\n`;
+  try {
+    appendFileSync("debug.log", logMessage);
+  } catch (e) {
+    // Silently fail if debug logging isn't available
   }
-  return apiKey;
 }
 
 export async function executeModel(modelConfig: ModelConfig, prompt:string): Promise<string> {
   switch (modelConfig.provider) {
     case "cli":
       return executeCliModel(modelConfig.command, prompt);
-    case "google":
-      return executeGoogleModel(resolveApiKey(modelConfig.apiKey), prompt);
-    case "anthropic":
-      return executeAnthropicModel(resolveApiKey(modelConfig.apiKey), prompt);
-    case "ollama":
-      return executeOllamaModel(modelConfig.baseURL, modelConfig.model, prompt);
     default:
-      throw new Error(`Unsupported provider: ${(modelConfig as any).provider}`);
+      throw new Error(`Unsupported provider: ${(modelConfig as any).provider}. Only 'cli' provider is currently implemented.`);
   }
+}
+
+function escapeShellArg(arg: string): string {
+  // Escape single quotes by ending the quoted string, adding an escaped quote, and starting a new quoted string
+  return "'" + arg.replace(/'/g, "'\"'\"'") + "'";
 }
 
 async function executeCliModel(command: string, prompt: string): Promise<string> {
   return new Promise((resolve, reject) => {
     // Split command into parts for spawn
-    const [cmd, ...args] = command.split(" ");
+    const [cmd, ...baseArgs] = command.split(" ");
     
-    const child = spawn(cmd, [...args, prompt], {
-      stdio: ["pipe", "pipe", "pipe"]
+    // Add the prompt as a properly escaped argument
+    const args = [...baseArgs, escapeShellArg(prompt)];
+    
+    debugLog(`Executing: ${cmd} ${args.join(" ")} with prompt: ${prompt.substring(0, 100)}...`);
+    
+    const child = spawn(cmd, args, {
+      stdio: ["pipe", "pipe", "pipe"],
+      shell: true  // Enable shell to handle argument parsing properly
     });
 
     let stdout = "";
@@ -54,29 +58,22 @@ async function executeCliModel(command: string, prompt: string): Promise<string>
     });
 
     child.on("close", (code) => {
+      debugLog(`CLI process exited with code: ${code}`);
+      debugLog(`stdout: ${stdout}`);
+      debugLog(`stderr: ${stderr}`);
+      
       if (code !== 0) {
         reject(`CLI process exited with code ${code}: ${stderr}`);
       } else {
         resolve(stdout.trim());
       }
     });
+
+    // Close stdin immediately since we're not using it
+    child.stdin.end();
   });
 }
 
-async function executeGoogleModel(apiKey: string, prompt: string): Promise<string> {
-  // Placeholder for Google API implementation
-  return `Google API response to: ${prompt.substring(0, 50)}...`;
-}
-
-async function executeAnthropicModel(apiKey: string, prompt: string): Promise<string> {
-  // Placeholder for Anthropic API implementation
-  return `Anthropic API response to: ${prompt.substring(0, 50)}...`;
-}
-
-async function executeOllamaModel(baseURL: string, model: string, prompt: string): Promise<string> {
-  // Placeholder for Ollama API implementation
-  return `Ollama (${model}) response to: ${prompt.substring(0, 50)}...`;
-}
 
 // Builds the system prompt for a tool by combining the tool's prompt with tool-calling instructions
 export function buildToolPrompt(toolConfig: ToolConfig, availableTools: Record<string, ToolConfig>): string {

@@ -1,13 +1,12 @@
 {
-  "mainModel": "claude-code",
   "models": {
     "claude-code": {
       "provider": "cli",
-      "command": "claude-code --prompt"
+      "command": "claude -p"
     },
     "gemini-cli": {
       "provider": "cli",
-      "command": "gemini-cli --prompt"
+      "command": "gemini -p"
     }
   },
   "tools": {

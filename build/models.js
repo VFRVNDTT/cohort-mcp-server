@@ -3,37 +3,39 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.executeModel = executeModel;
 exports.buildToolPrompt = buildToolPrompt;
 const child_process_1 = require("child_process");
-function resolveApiKey(apiKey) {
-    if (apiKey.startsWith("env:")) {
-        const envVar = apiKey.substring(4);
-        const key = process.env[envVar];
-        if (!key) {
-            throw new Error(`Environment variable not found: ${envVar}`);
-        }
-        return key;
+const fs_1 = require("fs");
+function debugLog(message) {
+    const timestamp = new Date().toISOString();
+    const logMessage = `${timestamp}: ${message}\n`;
+    try {
+        (0, fs_1.appendFileSync)("debug.log", logMessage);
     }
-    return apiKey;
+    catch (e) {
+        // Silently fail if debug logging isn't available
+    }
 }
 async function executeModel(modelConfig, prompt) {
     switch (modelConfig.provider) {
         case "cli":
             return executeCliModel(modelConfig.command, prompt);
-        case "google":
-            return executeGoogleModel(resolveApiKey(modelConfig.apiKey), prompt);
-        case "anthropic":
-            return executeAnthropicModel(resolveApiKey(modelConfig.apiKey), prompt);
-        case "ollama":
-            return executeOllamaModel(modelConfig.baseURL, modelConfig.model, prompt);
         default:
-            throw new Error(`Unsupported provider: ${modelConfig.provider}`);
+            throw new Error(`Unsupported provider: ${modelConfig.provider}. Only 'cli' provider is currently implemented.`);
     }
+}
+function escapeShellArg(arg) {
+    // Escape single quotes by ending the quoted string, adding an escaped quote, and starting a new quoted string
+    return "'" + arg.replace(/'/g, "'\"'\"'") + "'";
 }
 async function executeCliModel(command, prompt) {
     return new Promise((resolve, reject) => {
         // Split command into parts for spawn
-        const [cmd, ...args] = command.split(" ");
-        const child = (0, child_process_1.spawn)(cmd, [...args, prompt], {
-            stdio: ["pipe", "pipe", "pipe"]
+        const [cmd, ...baseArgs] = command.split(" ");
+        // Add the prompt as a properly escaped argument
+        const args = [...baseArgs, escapeShellArg(prompt)];
+        debugLog(`Executing: ${cmd} ${args.join(" ")} with prompt: ${prompt.substring(0, 100)}...`);
+        const child = (0, child_process_1.spawn)(cmd, args, {
+            stdio: ["pipe", "pipe", "pipe"],
+            shell: true // Enable shell to handle argument parsing properly
         });
         let stdout = "";
         let stderr = "";
@@ -47,6 +49,9 @@ async function executeCliModel(command, prompt) {
             reject(`CLI execution error: ${error.message}`);
         });
         child.on("close", (code) => {
+            debugLog(`CLI process exited with code: ${code}`);
+            debugLog(`stdout: ${stdout}`);
+            debugLog(`stderr: ${stderr}`);
             if (code !== 0) {
                 reject(`CLI process exited with code ${code}: ${stderr}`);
             }
@@ -54,19 +59,9 @@ async function executeCliModel(command, prompt) {
                 resolve(stdout.trim());
             }
         });
+        // Close stdin immediately since we're not using it
+        child.stdin.end();
     });
-}
-async function executeGoogleModel(apiKey, prompt) {
-    // Placeholder for Google API implementation
-    return `Google API response to: ${prompt.substring(0, 50)}...`;
-}
-async function executeAnthropicModel(apiKey, prompt) {
-    // Placeholder for Anthropic API implementation
-    return `Anthropic API response to: ${prompt.substring(0, 50)}...`;
-}
-async function executeOllamaModel(baseURL, model, prompt) {
-    // Placeholder for Ollama API implementation
-    return `Ollama (${model}) response to: ${prompt.substring(0, 50)}...`;
 }
 // Builds the system prompt for a tool by combining the tool's prompt with tool-calling instructions
 function buildToolPrompt(toolConfig, availableTools) {

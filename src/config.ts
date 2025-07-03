@@ -3,25 +3,10 @@ import fs from "fs";
 import path from "path";
 
 // Define Zod schemas for configuration validation
-const ModelConfigSchema = z.union([
-  z.object({
-    provider: z.literal("cli"),
-    command: z.string().describe("Command to execute the CLI model")
-  }),
-  z.object({
-    provider: z.literal("google"),
-    apiKey: z.string().describe("Google API key (can use 'env:VAR_NAME' syntax)")
-  }),
-  z.object({
-    provider: z.literal("anthropic"),
-    apiKey: z.string().describe("Anthropic API key (can use 'env:VAR_NAME' syntax)")
-  }),
-  z.object({
-    provider: z.literal("ollama"),
-    baseURL: z.string().url().describe("Base URL for Ollama API"),
-    model: z.string().describe("Model name to use with Ollama")
-  })
-]);
+const ModelConfigSchema = z.object({
+  provider: z.literal("cli"),
+  command: z.string().describe("Command to execute the CLI model")
+});
 
 const ToolConfigSchema = z.object({
   model: z.string().describe("Model ID to use for this tool"),
@@ -30,7 +15,6 @@ const ToolConfigSchema = z.object({
 });
 
 const ConfigSchema = z.object({
-  mainModel: z.string().describe("Default model ID for general tasks"),
   models: z.record(z.string(), ModelConfigSchema),
   tools: z.record(z.string(), ToolConfigSchema)
 });

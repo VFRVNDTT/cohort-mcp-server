@@ -1,0 +1,6 @@
+2025-07-03T15:36:03.476Z: Server initializing...
+2025-07-03T15:36:03.502Z: Registering tool: code_generator with description: For writing and refactoring high-quality code.
+2025-07-03T15:36:03.503Z: Successfully registered tool: code_generator
+2025-07-03T15:36:03.503Z: Registering tool: debug_expert with description: For analyzing code, identifying bugs, and suggesting fixes.
+2025-07-03T15:36:03.503Z: Successfully registered tool: debug_expert
+2025-07-03T15:36:03.504Z: Connection established, running on stdio
