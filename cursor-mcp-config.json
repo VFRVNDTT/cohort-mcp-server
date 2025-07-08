@@ -1,0 +1,16 @@
+{
+  "mcpServers": {
+    "cohort": {
+      "command": "node",
+      "args": [
+        "/Volumes/My Passport for Mac/Projects/Side Projects/Cohort/build/index.js"
+      ],
+      "env": {
+        "COHORT_CONFIG_PATH": "/Volumes/My Passport for Mac/Projects/Side Projects/Cohort/cohort.config.json",
+        "ANTHROPIC_API_KEY": "your-anthropic-api-key-here",
+        "GOOGLE_API_KEY": "your-google-api-key-here",
+        "OPENAI_API_KEY": "your-openai-api-key-here"
+      }
+    }
+  }
+}

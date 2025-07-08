@@ -1,0 +1,45 @@
+# Source files
+src/
+*.ts
+!*.d.ts
+tsconfig.json
+
+# Development files
+debug.log
+*.log
+memory/
+.claude/
+claude-config-local.json
+.env
+cohort.config.json
+
+# Build artifacts (temporary)
+node_modules/
+coverage/
+.nyc_output/
+
+# Git and SCM
+.git
+.gitignore
+.github/
+
+# IDE and editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Testing
+test/
+tests/
+spec/
+*.test.js
+*.spec.js
+
+# Documentation source (keep built docs)
+docs/
