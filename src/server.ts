@@ -21,15 +21,15 @@ const DEFAULT_RETRY_CONFIG: RetryConfig = {
   backoffMultiplier: 2
 };
 
-// Editor-optimized response templates for different AI capabilities
-function createEditorOptimizedResponse(content: string, metadata: any) {
+// CLI-optimized response templates for different AI capabilities
+function createCLIOptimizedResponse(content: string, metadata: any) {
   const intelligenceType = determineIntelligenceType(metadata.toolName, { 
     model: '', 
     description: metadata.toolName || '', 
     prompt: '' 
   });
   
-  // Enhanced response templates based on editor AI capabilities
+  // Enhanced response templates based on CLI AI capabilities
   const responseTemplates = {
     GENERATIVE_INTELLIGENCE: {
       format: "structured_content",
@@ -65,12 +65,12 @@ function createEditorOptimizedResponse(content: string, metadata: any) {
       type: "text" as const, 
       text: content 
     }],
-    // Rich metadata optimized for editor AI consumption
+    // Rich metadata optimized for CLI AI consumption
     metadata: {
       ...metadata,
       intelligenceType,
       responseTemplate: template,
-      editorOptimizations: {
+      cliOptimizations: {
         format: template.format,
         capabilities: template.capabilities,
         optimization: template.optimization,
@@ -107,7 +107,7 @@ function generateContextExpansion(metadata: any) {
     domainContext: {
       toolCategory: categorizeToolByName(metadata.toolName),
       expertiseLevel: "ENTERPRISE_GRADE",
-      integrationCapabilities: ["MCP_PROTOCOL", "MULTI_EDITOR", "CROSS_PLATFORM"],
+      integrationCapabilities: ["MCP_PROTOCOL", "MULTI_CLI", "CROSS_PLATFORM"],
       qualityAssurance: "PRODUCTION_READY"
     },
     operationalContext: {
@@ -119,7 +119,7 @@ function generateContextExpansion(metadata: any) {
   };
 }
 
-// Generate related actions for editor AI guidance
+// Generate related actions for CLI AI guidance
 function generateRelatedActions(toolName: string, relatedTools: string[]) {
   const actionMap: Record<string, string[]> = {
     code_generator: ["debug_expert", "test_orchestrator", "security_auditor"],
@@ -153,7 +153,7 @@ function getPrimaryUseCase(intelligenceType: string): string {
   return useCaseMap[intelligenceType] || "GENERAL_INTELLIGENCE_SUPPORT";
 }
 
-// Generate follow-up suggestions for editor AI
+// Generate follow-up suggestions for CLI AI
 function getFollowUpSuggestions(toolName: string): string[] {
   const suggestionMap: Record<string, string[]> = {
     code_generator: ["Run tests to validate generated code", "Review security implications", "Optimize performance"],
@@ -551,7 +551,7 @@ function createToolHandler(toolName: string, configGetter: () => Config) {
           debugLog(`Tool '${toolName}' completed successfully in ${duration}ms with ${iterationCount} iterations`);
           
           // Enhanced AI-to-AI response format with cross-model optimization
-          const enhancedResponse = createEditorOptimizedResponse(
+          const enhancedResponse = createCLIOptimizedResponse(
             finalResponse,
             {
               toolName,

@@ -8,7 +8,7 @@ Cohort is an enterprise-grade MCP (Model Context Protocol) server that orchestra
 -   **Multi-Provider Support**: CLI tools (claude-code, gemini), API providers (Anthropic, Google, OpenAI, OpenRouter), and local models (Ollama)
 -   **Advanced Memory Management**: Persistent context across sessions with cross-model intelligence adaptation
 -   **Circuit Breaker & Retry Logic**: Enterprise-grade error handling with exponential backoff and failure classification
--   **Editor AI Optimization**: Enhanced response formatting specifically designed for AI-to-AI consumption
+-   **CLI AI Optimization**: Enhanced response formatting specifically designed for AI-to-AI consumption
 -   **Dynamic Configuration**: Hot-reload configuration changes without server restart
 -   **Comprehensive Logging**: Debug logging with execution metrics and performance profiling
 
@@ -124,7 +124,7 @@ Cohort operates as an intelligent orchestration layer with the following archite
 ### AI-to-AI Optimization
 - **Enhanced Response Formatting**: Responses optimized specifically for AI consumption with rich metadata
 - **Cross-Model Intelligence**: Context adaptation based on target model capabilities  
-- **Universal Compatibility**: Standardized output format for seamless editor AI integration
+- **Universal Compatibility**: Standardized output format for seamless CLI AI integration
 
 ### Memory & Context Management
 - **Persistent Memory**: Context preserved across sessions with intelligent summarization

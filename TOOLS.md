@@ -35,7 +35,7 @@ This document provides comprehensive documentation for all 30 specialized intell
 **Primary Model**: gemini-cli  
 **Capabilities**: Code creation, architecture design, solution synthesis
 
-**Description**: Provides comprehensive code generation intelligence and contextual analysis to enhance editor AI capabilities for programming tasks.
+**Description**: Provides comprehensive code generation intelligence and contextual analysis to enhance CLI AI capabilities for programming tasks.
 
 **Key Features**:
 - Comprehensive project structure analysis using @ syntax (@src/ @components/ @utils/)
@@ -58,7 +58,7 @@ This document provides comprehensive documentation for all 30 specialized intell
 **Primary Model**: gemini-cli  
 **Capabilities**: Pattern recognition, issue identification, recommendation generation
 
-**Description**: Provides comprehensive debugging intelligence and multi-layer code analysis to enhance editor AI capabilities for bug identification and resolution.
+**Description**: Provides comprehensive debugging intelligence and multi-layer code analysis to enhance CLI AI capabilities for bug identification and resolution.
 
 **Key Features**:
 - Comprehensive codebase scanning using @ syntax (@src/ @tests/ @logs/ @config/)
@@ -105,7 +105,7 @@ This document provides comprehensive documentation for all 30 specialized intell
 **Primary Model**: gemini-cli  
 **Capabilities**: Automated vulnerability detection, informed defense strategies
 
-**Description**: Provides comprehensive security intelligence and vulnerability analysis to enhance editor AI capabilities for security assessment, threat detection, and defense implementation.
+**Description**: Provides comprehensive security intelligence and vulnerability analysis to enhance CLI AI capabilities for security assessment, threat detection, and defense implementation.
 
 **Key Features**:
 - Complete security posture analysis using @./ syntax with threat landscape mapping
@@ -129,7 +129,7 @@ This document provides comprehensive documentation for all 30 specialized intell
 **Primary Model**: gemini-cli  
 **Capabilities**: Information synthesis, source correlation, knowledge mapping
 
-**Description**: Provides comprehensive research intelligence and multi-source data synthesis to enhance editor AI capabilities for information gathering and knowledge discovery.
+**Description**: Provides comprehensive research intelligence and multi-source data synthesis to enhance CLI AI capabilities for information gathering and knowledge discovery.
 
 **Research Capabilities**:
 - Comprehensive documentation analysis and cross-referencing
@@ -153,7 +153,7 @@ This document provides comprehensive documentation for all 30 specialized intell
 **Primary Model**: gemini-cli  
 **Capabilities**: Automated test generation, informed quality assurance strategies
 
-**Description**: Provides comprehensive testing intelligence and quality assurance orchestration to enhance editor AI capabilities for test generation, execution, and optimization.
+**Description**: Provides comprehensive testing intelligence and quality assurance orchestration to enhance CLI AI capabilities for test generation, execution, and optimization.
 
 **Testing Intelligence**:
 - Complete testing ecosystem analysis using @./ syntax with framework detection
@@ -176,7 +176,7 @@ This document provides comprehensive documentation for all 30 specialized intell
 **Primary Model**: gemini-cli  
 **Capabilities**: Informed architectural decisions, strategic project insights
 
-**Description**: Provides comprehensive project intelligence and architecture analysis to enhance editor AI capabilities for deep codebase understanding and strategic development guidance.
+**Description**: Provides comprehensive project intelligence and architecture analysis to enhance CLI AI capabilities for deep codebase understanding and strategic development guidance.
 
 **Architecture Intelligence**:
 - Complete project structure analysis using @./ syntax with hierarchical organization mapping
@@ -199,7 +199,7 @@ This document provides comprehensive documentation for all 30 specialized intell
 **Primary Model**: gemini-cli  
 **Capabilities**: Automated refactoring assistance, informed optimization strategies
 
-**Description**: Provides comprehensive refactoring intelligence and code optimization orchestration to enhance editor AI capabilities for intelligent code transformation and modernization.
+**Description**: Provides comprehensive refactoring intelligence and code optimization orchestration to enhance CLI AI capabilities for intelligent code transformation and modernization.
 
 **Refactoring Analysis**:
 - Complete codebase analysis using @./ syntax with quality assessment
@@ -221,7 +221,7 @@ This document provides comprehensive documentation for all 30 specialized intell
 **Primary Model**: gemini-cli  
 **Capabilities**: Automated conflict resolution, informed dependency optimization strategies
 
-**Description**: Provides comprehensive dependency intelligence and resolution orchestration to enhance editor AI capabilities for package management and conflict resolution.
+**Description**: Provides comprehensive dependency intelligence and resolution orchestration to enhance CLI AI capabilities for package management and conflict resolution.
 
 **Dependency Intelligence**:
 - Complete ecosystem analysis using @package.json @requirements.txt @Cargo.toml syntax
@@ -244,7 +244,7 @@ This document provides comprehensive documentation for all 30 specialized intell
 **Primary Model**: gemini-cli  
 **Capabilities**: Automated transformation assistance, informed modernization strategies
 
-**Description**: Provides comprehensive migration intelligence and transformation orchestration to enhance editor AI capabilities for technology migrations and framework upgrades.
+**Description**: Provides comprehensive migration intelligence and transformation orchestration to enhance CLI AI capabilities for technology migrations and framework upgrades.
 
 **Migration Intelligence**:
 - Complete migration landscape analysis using @./ syntax with dependency mapping
@@ -266,7 +266,7 @@ This document provides comprehensive documentation for all 30 specialized intell
 **Primary Model**: gemini-cli  
 **Capabilities**: Task orchestration, dependency mapping, progress tracking
 
-**Description**: Provides comprehensive task orchestration and workflow intelligence to enhance editor AI capabilities for complex multi-step task decomposition and coordination.
+**Description**: Provides comprehensive task orchestration and workflow intelligence to enhance CLI AI capabilities for complex multi-step task decomposition and coordination.
 
 **Task Orchestration**:
 - Complex task analysis with dependency mapping and execution pathway optimization
@@ -288,7 +288,7 @@ This document provides comprehensive documentation for all 30 specialized intell
 **Primary Model**: gemini-cli  
 **Capabilities**: Technical guidance, accurate implementation assistance
 
-**Description**: Provides comprehensive documentation intelligence and technical resource analysis to enhance editor AI capabilities for technical information discovery.
+**Description**: Provides comprehensive documentation intelligence and technical resource analysis to enhance CLI AI capabilities for technical information discovery.
 
 **Documentation Analysis**:
 - Multi-source documentation cross-referencing and consistency analysis
@@ -310,7 +310,7 @@ This document provides comprehensive documentation for all 30 specialized intell
 **Primary Model**: gemini-cli  
 **Capabilities**: Enhanced understanding, informed guidance, strategic insights
 
-**Description**: Provides comprehensive context expansion and knowledge mapping intelligence to enhance editor AI capabilities for deep understanding and informed decision-making.
+**Description**: Provides comprehensive context expansion and knowledge mapping intelligence to enhance CLI AI capabilities for deep understanding and informed decision-making.
 
 **Context Mapping**:
 - Complete technology ecosystem analysis with dependency visualization
