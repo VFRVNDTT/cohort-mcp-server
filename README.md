@@ -1,6 +1,6 @@
 # Cohort MCP Server
 
-Cohort is an enterprise-grade MCP (Model Context Protocol) server that orchestrates collaboration between multiple AI models across 30 specialized intelligence tools. It provides comprehensive AI-to-AI communication optimization, enabling seamless interaction between CLI-based models (Claude Code, Gemini CLI), API-based models (Anthropic, Google, OpenAI), and local models via Ollama.
+Cohort is an enterprise-grade MCP (Model Context Protocol) server that orchestrates collaboration between multiple AI models across 30 specialized intelligence tools. Designed specifically for CLI AI tools like Claude Code and Gemini CLI, it provides comprehensive AI-to-AI communication optimization, enabling seamless interaction between CLI-based models, API-based models (Anthropic, Google, OpenAI), and local models via Ollama.
 
 ## Key Features
 
@@ -33,7 +33,6 @@ Add the following JSON block to your `mcpServers` object:
 }
 ```
 
-**Note**: You must publish this package to npm as `cohort-mcp-server` for the `npx` command to work.
 
 ## Configuration
 
