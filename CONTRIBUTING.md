@@ -117,6 +117,8 @@ docs(readme): update installation instructions
 refactor(server): improve error handling logic
 ```
 
+**Why use conventional commits?** This format enables automated changelog generation, semantic versioning, and better collaboration by making the purpose of each change immediately clear.
+
 Types: `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`
 
 ### Branch Naming
@@ -447,10 +449,49 @@ Follow semantic versioning (semver):
 
 ### Code of Conduct
 
-- Be respectful and inclusive
-- Focus on constructive feedback
-- Help others learn and grow
-- Follow project guidelines
+We are committed to providing a welcoming and inspiring community for all. Please review our full [Code of Conduct](CODE_OF_CONDUCT.md) which covers:
+
+- **Be Respectful**: Treat everyone with kindness and respect
+- **Be Inclusive**: Welcome people of all backgrounds and experience levels  
+- **Be Constructive**: Focus on helpful feedback and collaborative solutions
+- **Be Professional**: Maintain professional standards in all interactions
+- **Be Supportive**: Help others learn, grow, and succeed
+
+Report any violations to the project maintainers. We take our code of conduct seriously and will address issues promptly and fairly.
+
+### Where to Get Help
+
+If you need assistance while contributing:
+
+- **Technical Questions**: Open a [GitHub Discussion](https://github.com/VFRVNDTT/cohort-mcp-server/discussions)
+- **Bug Reports**: Submit a [GitHub Issue](https://github.com/VFRVNDTT/cohort-mcp-server/issues)
+- **Feature Ideas**: Start a [GitHub Discussion](https://github.com/VFRVNDTT/cohort-mcp-server/discussions) 
+- **Documentation**: Check [TOOLS.md](TOOLS.md) and [TROUBLESHOOTING.md](TROUBLESHOOTING.md)
+- **Getting Stuck**: Comment on your pull request and tag a maintainer
+
+### Project Vision & Roadmap
+
+Cohort aims to become the leading MCP server for AI model orchestration with these priorities:
+
+**Current Focus (v1.x)**:
+- Stabilize core 30 intelligence tools
+- Improve memory system performance
+- Enhance error handling and reliability
+- Expand model provider support
+
+**Future Directions (v2.x+)**:
+- Visual workflow designer
+- Advanced analytics and insights
+- Community tool marketplace
+- Enterprise governance features
+- Real-time collaboration capabilities
+
+**Contributing Guidelines by Complexity**:
+- **Beginner**: Documentation, examples, bug reports, config templates
+- **Intermediate**: Tool improvements, new model providers, testing
+- **Advanced**: New intelligence tools, architecture changes, performance optimization
+
+See our [GitHub Project Board](https://github.com/VFRVNDTT/cohort-mcp-server/projects) for current priorities.
 
 ## License
 

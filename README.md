@@ -120,6 +120,12 @@ export COHORT_CONFIG_PATH="/path/to/your/cohort.config.json"
 
 Cohort operates as an intelligent orchestration layer with the following architecture:
 
+```
+[CLI AI Tool] → [MCP Client] → [Cohort Server] → [Tool Execution] → [AI Model] → [Response]
+                                    ↓
+                              [Memory System] ← [Context & Learning]
+```
+
 ### AI-to-AI Optimization
 - **Enhanced Response Formatting**: Responses optimized specifically for AI consumption with rich metadata
 - **Cross-Model Intelligence**: Context adaptation based on target model capabilities  
@@ -144,6 +150,39 @@ Cohort operates as an intelligent orchestration layer with the following archite
 
 This enables powerful AI collaboration workflows where different models contribute their specialized capabilities to complex tasks.
 
+## Use Cases & Examples
+
+### Debugging Complex Issues
+```bash
+# Workflow: debug_expert → code_analyzer → refactoring_expert
+1. Identify bug patterns across codebase
+2. Analyze code quality and structure issues  
+3. Generate refactoring recommendations
+```
+
+### Full-Stack Development
+```bash
+# Workflow: code_generator → security_auditor → test_orchestrator
+1. Generate implementation with architectural context
+2. Scan for security vulnerabilities
+3. Create comprehensive test suite
+```
+
+### Documentation & Migration
+```bash
+# Workflow: documentation_finder → migration_assistant → technical_writer
+1. Research best practices and compatibility
+2. Plan migration strategy with risk assessment
+3. Generate updated documentation
+```
+
+## Community & Support
+
+- **GitHub Repository**: [VFRVNDTT/cohort-mcp-server](https://github.com/VFRVNDTT/cohort-mcp-server)
+- **Issues & Bug Reports**: [GitHub Issues](https://github.com/VFRVNDTT/cohort-mcp-server/issues)
+- **Feature Requests**: [GitHub Discussions](https://github.com/VFRVNDTT/cohort-mcp-server/discussions)
+- **Documentation**: See [TOOLS.md](TOOLS.md), [TROUBLESHOOTING.md](TROUBLESHOOTING.md), [CONTRIBUTING.md](CONTRIBUTING.md)
+
 ## Configuration Templates
 
 Two template configurations are provided:
@@ -153,12 +192,27 @@ Two template configurations are provided:
 
 Copy either template to your project root as `cohort.config.json` and customize as needed.
 
+## Who Is This For?
+
+Cohort is designed for:
+- **CLI AI Users**: Developers using Claude Code, Gemini CLI, and similar command-line AI tools
+- **AI Researchers**: Teams needing orchestrated multi-model workflows
+- **Development Teams**: Groups requiring specialized AI assistance for coding, debugging, security, and documentation
+- **Power Users**: Advanced users wanting to leverage multiple AI models in coordinated workflows
+
 ## Quick Start
 
 1. Install via MCP client configuration (see Installation section)
 2. Copy a template configuration: `cp templates/cohort.full.template.json ./cohort.config.json`
 3. Edit `cohort.config.json` and add your API keys directly to the `apiKey` fields
 4. The server will automatically detect and use your configuration
+
+### Template Choices
+
+- **`cohort.full.template.json`**: Complete configuration with all 30 tools and 7 model providers
+- **`cohort.minimal.template.json`**: Essential 10 tools for core development workflows
+
+Choose the full template for complete functionality or minimal for lighter resource usage.
 
 ### API Key Configuration
 

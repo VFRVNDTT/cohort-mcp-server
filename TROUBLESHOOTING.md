@@ -28,17 +28,30 @@ echo $ANTHROPIC_API_KEY
 echo $GOOGLE_API_KEY
 ```
 
+## Common Error Messages
+
+| Error Message | Meaning | Solution |
+|---------------|---------|----------|
+| `CLI tool 'gemini' not found` | Gemini CLI not installed or not in PATH | Install: `npm install -g @google-ai/generative-ai` |
+| `MCP error -32000: Connection closed` | MCP server connection failed | Check server configuration and restart |
+| `API key` or `authentication` errors | Invalid or missing API keys | Verify API keys in environment variables |
+| `rate limit` or `quota` errors | API rate limits exceeded | Wait or switch to different model provider |
+| `Tool not found` errors | Tool configuration missing | Copy complete template configuration |
+| `Circuit breaker.*OPEN` | Too many failures, circuit opened | Wait for recovery or restart server |
+| `Memory.*error` | Memory system issues | Clear `.cohort-memory/` directory |
+| `fieldValue.toUpperCase is not a function` | Notion API configuration issue | Check Notion server configuration |
+
 ## Common Issues
 
 ### 1. Only 6-8 Tools Available (RESOLVED)
 
-**Problem**: MCP client only shows a limited set of tools instead of all 29.
+**Problem**: MCP client only shows a limited set of tools instead of all 30.
 
 **Cause**: Client was loading template configuration files with limited tool sets.
 
 **Solution**: ✅ **Fixed in latest version**
 - Template files renamed to prevent auto-loading
-- Both templates now include all 29 tools
+- Both templates now include all 30 tools
 - Copy template to proper location:
 
 ```bash
@@ -236,7 +249,7 @@ python -c "import json; config=json.load(open('cohort.config.json')); print(list
 cp templates/cohort.full.template.json ./cohort.config.json
 
 # Verify all tools present
-grep -c "\"model\":" cohort.config.json  # Should show 29
+grep -c "\"model\":" cohort.config.json  # Should show 30
 ```
 
 #### Model Configuration Issues
@@ -434,6 +447,35 @@ grep "completed successfully" debug.log | awk '{print $NF}' | sort -n
 
 # Circuit breaker monitoring
 grep "Circuit breaker" debug.log | tail -10
+```
+
+## Proactive Health Checks
+
+Run these commands regularly to ensure your Cohort server is healthy:
+
+```bash
+# Check server status
+ps aux | grep cohort-mcp-server
+
+# Verify configuration syntax
+python -m json.tool cohort.config.json > /dev/null && echo "✅ Config valid" || echo "❌ Config invalid"
+
+# Check tool count
+echo "Tools configured: $(grep -c '"model":' cohort.config.json)/30"
+
+# Verify API keys
+echo "Environment variables set:"
+env | grep -E "(ANTHROPIC|GOOGLE|OPENAI|OPENROUTER)_API_KEY" | wc -l
+
+# Check memory system
+ls -la .cohort-memory/ 2>/dev/null && echo "✅ Memory system initialized" || echo "⚠️ Memory system not found"
+
+# Test CLI tools
+which gemini > /dev/null && echo "✅ Gemini CLI available" || echo "❌ Gemini CLI missing"
+which claude > /dev/null && echo "✅ Claude CLI available" || echo "❌ Claude CLI missing"
+
+# Check debug log for recent errors
+tail -20 debug.log | grep -i error
 ```
 
 ## Recovery Procedures
