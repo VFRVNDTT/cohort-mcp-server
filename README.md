@@ -1,13 +1,13 @@
 # Cohort MCP Server
 
-Cohort is an enterprise-grade MCP (Model Context Protocol) server that orchestrates collaboration between multiple AI models across 30 specialized intelligence tools. Designed specifically for CLI AI tools like Claude Code and Gemini CLI, it provides comprehensive AI-to-AI communication optimization, enabling seamless interaction between CLI-based models, API-based models (Anthropic, Google, OpenAI), and local models via Ollama.
+Cohort is a powerful MCP (Model Context Protocol) server that orchestrates collaboration between multiple AI models across 30 specialized intelligence tools. Designed specifically for CLI AI tools like Claude Code and Gemini CLI, it provides comprehensive AI-to-AI communication optimization, enabling seamless interaction between CLI-based models, API-based models (Anthropic, Google, OpenAI), and local models via Ollama.
 
 ## Key Features
 
 -   **30 Specialized Intelligence Tools**: Comprehensive coverage for development, security, research, analysis, debugging, testing, refactoring, and more
 -   **Multi-Provider Support**: CLI tools (claude-code, gemini), API providers (Anthropic, Google, OpenAI, OpenRouter), and local models (Ollama)
 -   **Advanced Memory Management**: Persistent context across sessions with cross-model intelligence adaptation
--   **Circuit Breaker & Retry Logic**: Enterprise-grade error handling with exponential backoff and failure classification
+-   **Circuit Breaker & Retry Logic**: Robust error handling with exponential backoff and failure classification
 -   **CLI AI Optimization**: Enhanced response formatting specifically designed for AI-to-AI consumption
 -   **Dynamic Configuration**: Hot-reload configuration changes without server restart
 -   **Comprehensive Logging**: Debug logging with execution metrics and performance profiling
@@ -237,7 +237,7 @@ Cohort supports configurable fallback models for enhanced reliability. If the pr
 - Intelligent context summarization
 - Performance metrics tracking
 
-### Enterprise Reliability
+### Reliability
 - Circuit breaker protection
 - Exponential backoff retry logic
 - Comprehensive error classification
