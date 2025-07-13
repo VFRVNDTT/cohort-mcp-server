@@ -1,6 +1,6 @@
 {
   "name": "cohort-mcp-server",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "MCP server orchestrating collaboration between multiple AI models across 30 specialized intelligence tools",
   "main": "build/index.js",
   "bin": {
